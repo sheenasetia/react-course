@@ -9,6 +9,7 @@ class DishDetail extends Component {
     }
 
     //to format GMT date 
+    /*
     formatDate(d) 
     {
       var date = new Date(d);
@@ -44,6 +45,7 @@ class DishDetail extends Component {
       return month[date.getMonth()] + " " + day  + ", " +date.getFullYear();
       }   
      }
+    */
 
 
     renderComments(comments) {
@@ -59,12 +61,16 @@ class DishDetail extends Component {
                 <ul className = "list-unstyled">
                     { comments.map((comm)=>{
 
-                    var date_resp = this.formatDate(comm.date); 
+                    {/*var date_resp = this.formatDate(comm.date); */}
                         return(
                         <li>
                             <ul className = "list-unstyled">
                                 <li>{comm.comment}</li><br/>
-                                <li> -- {comm.author} , {date_resp}</li>
+                                <li> -- {comm.author} , {new Intl.DateTimeFormat('en-US', 
+                                { year: 'numeric', month: 'short', day: '2-digit'})
+                                .format(new Date(Date.parse(comm.date)))}
+                                </li>
+                                {/*<li> -- {comm.author} , {date_resp}</li>*/}
                             </ul>
                             <br/>
                         </li>
