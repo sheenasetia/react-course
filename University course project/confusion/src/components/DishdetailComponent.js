@@ -106,15 +106,11 @@ class DishDetail extends Component {
                 <div></div>
             );
 
-        const dish = this.renderDish(this.props.dish);
-
-        const comment = this.renderComments(this.props.dish.comments);
-
             return(
                 <div className="container">
                 <div className="row">
-                    {dish}
-                    {comment}
+                    {this.renderDish(this.props.dish)}
+                    {this.renderComments(this.props.dish.comments)}
                 </div>
                 </div>
 
