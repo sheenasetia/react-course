@@ -1,46 +1,104 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody,
     CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, Label, Row, Col } from 'reactstrap';
+import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 
-    //to format GMT date 
-    /*
-    formatDate(d) 
-    {
-      var date = new Date(d);
+const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = (len) => (val) => val && (val.length >= len);
 
-     if ( isNaN( date .getTime() ) ) 
-     {
-        return d;
-     }
-     else
-    {
-      
-      var month = new Array();
-      month[0] = "Jan";
-      month[1] = "Feb";
-      month[2] = "Mar";
-      month[3] = "Apr";
-      month[4] = "May";
-      month[5] = "Jun";
-      month[6] = "Jul";
-      month[7] = "Aug";
-      month[8] = "Sept";
-      month[9] = "Oct";
-      month[10] = "Nov";
-      month[11] = "Dec";
+class CommentForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isModalOpen: false
+        };
 
-      var day = date.getDate();
-      
-      if(day < 10)
-      {
-         day = "0"+day;
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
       }
-      
-      return month[date.getMonth()] + " " + day  + ", " +date.getFullYear();
-      }   
-     }
-    */
+
+      toggleModal() {
+        this.setState({
+          isModalOpen: !this.state.isModalOpen
+        });
+      }
+
+      handleSubmit(values) {
+        this.toggleModal();
+        console.log('Current State is: ' + JSON.stringify(values));
+        alert('Current State is: ' + JSON.stringify(values));
+        //event.preventDefault();
+      }
+        render() {
+            return (
+                <div className='col-12 col-md-5 m-1'>
+                    <Button outline onClick={this.toggleModal}><span className="fa fa-pencil fa-lg"></span> Submit Comment</Button>
+                    <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
+                    <ModalBody>
+                    <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+                            <Row className="form-group">
+                                <Label htmlFor="rating" md={2}>Rating</Label>
+                                <Col md={10}>
+                                    <Control.select model=".rating" name="rating"
+                                        className="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </Control.select>
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <Label htmlFor="auhtor" md={2}>Your Name</Label>
+                                <Col md={10}>
+                                    <Control.text model=".author" id="author" name="author"
+                                        placeholder="Your Name"
+                                        className="form-control"
+                                        validators={{
+                                            minLength: minLength(3), maxLength: maxLength(15)
+                                        }}
+                                         />
+                                    <Errors
+                                        className="text-danger"
+                                        model=".author"
+                                        show="touched"
+                                        messages={{
+                                            minLength: 'Must be greater than 2 characters',
+                                            maxLength: 'Must be 15 characters or less'
+                                        }}
+                                     />
+                                </Col>
+                            </Row>
+                                 
+                            <Row className="form-group">
+                                <Label htmlFor="comment" md={2}>Comment</Label>
+                                <Col md={10}>
+                                    <Control.textarea model=".comment" id="comment" name="comment"
+                                        rows="6"
+                                        className="form-control" />
+                                </Col>
+                            </Row>
+
+                            <Row className="form-group">
+                                <Col md={{size:10, offset: 2}}>
+                                    <Button type="submit" color="primary">
+                                    Submit
+                                    </Button>
+                                </Col>
+                            </Row>
+
+                        </LocalForm>
+                    </ModalBody>
+                </Modal>
+                </div>
+                
+            )
+        }
+   }
 
    function RenderDish({dish}) {
     
@@ -93,6 +151,7 @@ import { Link } from 'react-router-dom';
                         )
                     })}
                 </ul>
+                <CommentForm/>
             </div>
             
         )
