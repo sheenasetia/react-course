@@ -159,7 +159,6 @@ class CommentForm extends Component {
     }
 
     const  DishDetail = (props) => {
-        
         if (props.isLoading) {
             return(
                 <div className="container">
@@ -203,12 +202,10 @@ class CommentForm extends Component {
                 </div>
             );
         }
-        else {
-            if (props.dish == null)
+        else if (props.dish == null) {
             return(
                 <div></div>
             );
-
         }
         
       }
