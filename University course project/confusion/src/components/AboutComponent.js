@@ -1,31 +1,54 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../shared/baseUrl';
+import { Loading } from './LoadingComponent';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 function RenderLeader({leader}){
         return (
           <div key={leader.id} className="col-12 mt-5">
             <Media tag="li">
               <Media left top>
-                  <Media className="about-img" object src={leader.image} alt={leader.name} />
+                  <Media className="about-img" object src={baseUrl+ leader.image} alt={leader.name} />
               </Media>
+           
               <Media body className="ml-5">
                 <Media heading>{leader.name}</Media>
                 <p>{leader.designation}</p>
                 <p>{leader.description}</p>
               </Media>
+            
             </Media>
           </div>
         );
 }
 
 function About(props) {
-
-    const leaders = props.leaders.map((leader) => {
+    let leaders = "";
+    if (props.leaders.isLoading) {
+      leaders = (
+        <div className="container">
+          <div className="row">
+            <Loading />
+          </div>
+        </div>
+      );
+    } else if (props.leaders.errMess) {
+      leaders = (
+        <div className="container">
+          <div className="row">
+            <h4>{props.errMess}</h4>
+          </div>
+        </div>
+      );
+    } else if (props.leaders.leaders) {
+      leaders  = props.leaders.leaders.map((leader) => {
         return (
             <RenderLeader leader={leader} />
         );
     });
+}
 
     return(
         <div className="container">
@@ -83,12 +106,19 @@ function About(props) {
                 </div>
                 <div className="col-12">
                     <Media list>
-                        {leaders}
+                        <FadeTransform in
+                            transformProps={{
+                                exitTransform: 'scale(0.5) translateY(-50%)'
+                            }}>
+                            <Stagger in>
+                                {leaders}
+                            </Stagger>
+                        </FadeTransform>
                     </Media>
                 </div>
             </div>
         </div>
     );
-}
+    }
 
 export default About;    

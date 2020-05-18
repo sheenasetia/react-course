@@ -209,6 +209,30 @@
       "comment": "This a test comment",
       "date": "2020-05-17T09:35:12.414Z",
       "id": 20
+    },
+    {
+      "dishId": "sheena",
+      "rating": "setia",
+      "author": "1234567",
+      "comment": "s@gmail.com",
+      "date": "2020-05-18T10:22:28.545Z",
+      "id": 21
+    },
+    {
+      "dishId": "ssssss",
+      "rating": "hhhhhhh",
+      "author": "123456",
+      "comment": "s@gmail.com",
+      "date": "2020-05-18T10:29:18.710Z",
+      "id": 22
+    },
+    {
+      "dishId": 1,
+      "rating": "4",
+      "author": "sheena",
+      "comment": "test comment",
+      "date": "2020-05-18T10:38:23.702Z",
+      "id": 23
     }
   ],
   "promotions": [
@@ -271,6 +295,105 @@
       "message": "afadsfds",
       "date": "2017-12-04T09:41:49.890Z",
       "id": 1
+    },
+    {
+      "firstname": "ssssssssss",
+      "lastname": "hhhhhhhhh",
+      "telnum": "1234567",
+      "email": "s@gmail.com",
+      "agree": false,
+      "contactType": "Tel.",
+      "message": "feedback",
+      "date": "2020-05-18T10:34:30.756Z",
+      "id": 2
+    },
+    {
+      "firstname": "sheena",
+      "lastname": "setia",
+      "telnum": "1234656",
+      "email": "s@gmail.com",
+      "agree": false,
+      "contactType": "Tel.",
+      "message": "this is a test feedback",
+      "date": "2020-05-18T10:36:21.091Z",
+      "id": 3
+    },
+    {
+      "firstname": "abc",
+      "lastname": "def",
+      "telnum": "123456",
+      "email": "abc@gmail.com",
+      "agree": false,
+      "contactType": "Tel.",
+      "message": "feedbck",
+      "date": "2020-05-18T10:42:12.475Z",
+      "id": 4
+    },
+    {
+      "firstname": "aaa",
+      "lastname": "aaa",
+      "telnum": "1235",
+      "email": "aa@gmail.in",
+      "agree": false,
+      "contactType": "Tel.",
+      "message": "feedbk",
+      "date": "2020-05-18T10:46:31.715Z",
+      "id": 5
+    },
+    {
+      "firstname": "bvcx",
+      "lastname": "sdfg",
+      "telnum": "12465432",
+      "email": "asdfg@co.in",
+      "agree": false,
+      "contactType": "Tel.",
+      "message": "rhgfd",
+      "date": "2020-05-18T10:48:19.021Z",
+      "id": 6
+    },
+    {
+      "firstname": "fds",
+      "lastname": "asdf",
+      "telnum": "88765",
+      "email": "s@co.in",
+      "agree": false,
+      "contactType": "Tel.",
+      "message": "gfds",
+      "date": "2020-05-18T10:50:11.655Z",
+      "id": 7
+    },
+    {
+      "firstname": "sxdcftvgybh",
+      "lastname": "cfvgbhnj",
+      "telnum": "2345678",
+      "email": "dfg@gm.in",
+      "agree": false,
+      "contactType": "Tel.",
+      "message": "dfghj",
+      "date": "2020-05-18T10:51:26.208Z",
+      "id": 8
+    },
+    {
+      "firstname": "demo",
+      "lastname": "setia",
+      "telnum": "123456",
+      "email": "demo@gmail.com",
+      "agree": false,
+      "contactType": "Email",
+      "message": "my feedback",
+      "date": "2020-05-18T10:54:10.913Z",
+      "id": 9
+    },
+    {
+      "firstname": "mmmmm",
+      "lastname": "mmmmmm",
+      "telnum": "123456789",
+      "email": "m@gmail.com",
+      "agree": false,
+      "contactType": "Tel.",
+      "message": "sdfvgbhj",
+      "date": "2020-05-18T12:09:16.384Z",
+      "id": 10
     }
   ]
 }
